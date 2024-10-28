@@ -2,16 +2,17 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT ;
 app.use(cors());
 // MongoDB Connection
 async function connectToMongoDB() {
     try {
         await mongoose.connect(
-            'mongodb+srv://rishabhgit1704:Rentalmanagement123@rentalmgmt.qoi0sqo.mongodb.net/Pallavi-Portfolio',
+            process.env.MONGOURL,
             { useNewUrlParser: true, useUnifiedTopology: true }
         );
         console.log('MongoDB Connected');

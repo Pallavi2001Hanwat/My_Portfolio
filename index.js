@@ -47,6 +47,15 @@ const transporter = nodemailer.createTransport({
 });
 
 // Route to handle form submission, send emails, and store data
+
+app.get('/test', async (req, res) => {   
+    try {
+        res.status(200).send('succesfully connected');
+    } catch (error) {
+        console.error('Error sending emails:', error);
+        res.status(500).send('Error sending emails');
+    }
+});
 app.post('/send-email', async (req, res) => {
     const { name, email, message,subject } = req.body;
 
